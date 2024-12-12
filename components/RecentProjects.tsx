@@ -19,20 +19,24 @@ const RecentProjects = () => {
             key={item.id}
           >
             <PinContainer
-              title="/ui.aceternity.com"
-              href="https://twitter.com/mannupaaji"
+              title="/recent-projects"
+              href="https://github.com/msaifulhuda"
             >
               <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                 <div
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <img src="/bg.png" alt="bgimg" />
+                  <img
+                    src="/bg.png"
+                    alt="bgimg"
+                    className="w-full h-full object-cover lg:rounded-3xl"
+                  />
                 </div>
                 <img
                   src={item.img}
                   alt="cover"
-                  className="z-10 absolute bottom-0"
+                  className="z-10 absolute bottom-0 w-full h-full object-cover lg:rounded-2xl"
                 />
               </div>
 
@@ -40,15 +44,21 @@ const RecentProjects = () => {
                 {item.title}
               </h1>
 
-              <p
-                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2"
+                <p
+                className="lg:text-xl lg:font-normal font-light text-sm line-clamp-2 cursor-pointer"
                 style={{
                   color: "#BEC1DD",
                   margin: "1vh 0",
                 }}
-              >
+                onClick={(e) => {
+                  e.currentTarget.classList.toggle("line-clamp-2");
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.classList.add("line-clamp-2");
+                }}
+                >
                 {item.des}
-              </p>
+                </p>
 
               <div className="flex items-center justify-between mt-7 mb-3">
                 <div className="flex items-center">
@@ -65,12 +75,17 @@ const RecentProjects = () => {
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center">
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex justify-center items-center"
+                >
                   <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                    Check Live Site
+                  Check Live Site
                   </p>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
-                </div>
+                </a>
               </div>
             </PinContainer>
           </div>
